@@ -1,41 +1,54 @@
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useState } from 'react';
-import "./Login.css";
+import "./login.css";
 
 const login = () => {
-    return(
-       <div className="container">
-        <form>
-            <h1>Acesse o Sistema</h1>
 
-            <div>
-            <input type="email" placeholder='E-mail'/>
-            <FaUser className="icon" />
-            </div>
+    const [username, setUsername] = useState("")
+    const [password, setUssetPasswordrname] = useState("")
 
-            <div>
-            <input type="password" placeholder='Senha'/>
-            <FaLock className="icon" />
-            </div>
+    const handleSubmit = (event) => {
+        event.prevenDefault();
 
-            <div className="recall-forget">
-                <label>
-                    <input type="checkbox" />
-                    Lembra de mim vai, por favor! bora logo 🔪
-                </label>
-              <a href="#">Esqueceu a senha de novo muié, pelo amor de Deus né 🤪</a>
-            </div>
+        alert("Enviando os seus dados linda ❤️: " + username + " - " + password);
+    };
 
-            <button>Entrar</button>
+    return (
+        <div className="container">
+            <form onSubmit={handleSubmit}>
+                <h1>Acesse o Sistema</h1>
 
-            <div className="signuo-link">
-                <p>Tú não tem conta? e vai entrar como? 😡
-                    <a href="#">Bora se registrar pelo menos né mona? 👩‍🦰</a>
-                </p>
-            </div>
-            
-        </form>
-       </div>
+                <div className="input-field">
+                    <input type="email" placeholder='E-mail' 
+                    required
+                    onChange={(e) => setUsername(e.target.value)}/>
+                    <FaUser className="icon" />
+                </div>
+
+                <div className="input-field">
+                    <input type="password" placeholder='Senha' 
+                    onChange={(e) => setPassword(e.target.value)} />
+                    <FaLock className="icon" />
+                </div>
+
+                <div className="recall-forget">
+                    <label>
+                        <input type="checkbox" />
+                        Lembrar-me
+                    </label>
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+
+                <button>Entrar</button>
+
+                <div className="signup-link">
+                    <p>Não possui uma conta? 
+                        <a href="#">  Registrar-se</a>
+                    </p>
+                </div>
+
+            </form>
+        </div>
     );
 }
 
